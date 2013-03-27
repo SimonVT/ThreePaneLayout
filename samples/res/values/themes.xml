@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme" parent="android:Theme.Light" />
+
+    <style name="Theme.Sample">
+        <item name="threePaneLayoutStyle">@style/Widget.ThreePaneLayout</item>
+    </style>
+
+    <style name="Widget" />
+
+    <style name="Widget.ThreePaneLayout">
+        <item name="leftActiveIndicator">@drawable/menu_arrow</item>
+        <item name="middleActiveIndicator">@drawable/menu_arrow</item>
+        <item name="middlePaneCollapsible">@bool/collapseMiddlePane</item>
+    </style>
+
+</resources>

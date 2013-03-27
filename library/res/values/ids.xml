@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="tplLeftPane" type="id" />
+
+    <item name="tplMiddlePane" type="id" />
+
+    <item name="tplRightPane" type="id" />
+
+    <item name="tplActiveViewPosition" type="id" />
+
+</resources>

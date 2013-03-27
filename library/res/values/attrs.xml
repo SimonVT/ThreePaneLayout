@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="threePaneLayoutStyle" format="reference" />
+
+    <declare-styleable name="ThreePaneLayout">
+        <attr name="leftPaneLayout" format="reference" />
+
+        <attr name="middlePaneLayout" format="reference" />
+
+        <attr name="rightPaneLayout" format="reference" />
+
+        <attr name="leftPaneWidth" format="dimension" />
+
+        <attr name="middlePaneCollapsible" format="boolean" />
+
+        <attr name="middlePaneCollapsedWidth" format="dimension" />
+
+        <attr name="leftActiveIndicator" format="dimension" />
+
+        <attr name="middleActiveIndicator" format="dimension" />
+    </declare-styleable>
+
+</resources>
