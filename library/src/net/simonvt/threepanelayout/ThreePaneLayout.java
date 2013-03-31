@@ -13,7 +13,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -40,6 +39,26 @@ public class ThreePaneLayout extends ViewGroup {
 
     private static final int DEFAULT_DROP_SHADOW_WIDTH_DP = 6;
 
+    /**
+     * State when the layout is not animating and the left pane is visible.
+     */
+    public static final int STATE_LEFT_VISIBLE = 0;
+
+    /**
+     * State when the layout is animating to the right pane.
+     */
+    public static final int STATE_ANIMATE_RIGHT = 1;
+
+    /**
+     * State when the layout is animating to the left pane.
+     */
+    public static final int STATE_ANIMATE_LEFT = 2;
+
+    /**
+     * State when the layout is not animating and the right pane is visible.
+     */
+    public static final int STATE_RIGHT_VISIBLE = 4;
+
     private static final Interpolator SMOOTH_INTERPOLATOR = new SmoothInterpolator();
 
     private static final Interpolator INDICATOR_INTERPOLATOR = new AccelerateInterpolator();
@@ -63,8 +82,6 @@ public class ThreePaneLayout extends ViewGroup {
         }
     };
 
-    private VelocityTracker mVelocityTracker;
-
     private Drawable mShadow;
 
     private int mDropShadowWidth;
@@ -80,6 +97,8 @@ public class ThreePaneLayout extends ViewGroup {
     private int mVisiblePanes = PANE_LEFT | PANE_MIDDLE;
 
     private OnPaneStateChangeListener mPaneStateChangeListener;
+
+    private int mPageState = STATE_LEFT_VISIBLE;
 
     private View mLeftActiveView;
 
@@ -144,8 +163,6 @@ public class ThreePaneLayout extends ViewGroup {
     public interface OnPaneStateChangeListener {
 
         void onPaneStateChange(int oldState, int newState);
-
-        void onPaneScrolled(int offsetPixels, float offset);
     }
 
     public ThreePaneLayout(Context context) {
@@ -251,6 +268,7 @@ public class ThreePaneLayout extends ViewGroup {
         mVisiblePanes = PANE_LEFT | PANE_MIDDLE;
         requestLayout();
         animateOffsetTo(0.0f, animate);
+        if (animate) setPageState(STATE_ANIMATE_LEFT);
     }
 
     public void showRightPane() {
@@ -262,6 +280,7 @@ public class ThreePaneLayout extends ViewGroup {
         if (mMiddlePaneCollapsible) mVisiblePanes |= PANE_MIDDLE;
         requestLayout();
         animateOffsetTo(1.0f, animate);
+        if (animate) setPageState(STATE_ANIMATE_RIGHT);
     }
 
     public boolean isLeftPaneVisible() {
@@ -579,6 +598,17 @@ public class ThreePaneLayout extends ViewGroup {
         }
     }
 
+    public void setPaneStateChangeListener(OnPaneStateChangeListener paneStateChangeListener) {
+        mPaneStateChangeListener = paneStateChangeListener;
+    }
+
+    private void setPageState(int state) {
+        if (state != mPageState) {
+            if (mPaneStateChangeListener != null) mPaneStateChangeListener.onPaneStateChange(mPageState, state);
+            mPageState = state;
+        }
+    }
+
     /**
      * If possible, set the layer type to {@link View#LAYER_TYPE_HARDWARE}.
      */
@@ -613,6 +643,7 @@ public class ThreePaneLayout extends ViewGroup {
         mScroller.abortAnimation();
         final float finalVal = mScroller.getFinal();
         setOffset(finalVal);
+        setPageState(isLeftPaneVisible() ? STATE_LEFT_VISIBLE : STATE_RIGHT_VISIBLE);
         stopLayerTranslation();
     }
 
