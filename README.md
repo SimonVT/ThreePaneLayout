@@ -3,6 +3,48 @@ MenuDrawer
 
 A three-pane layout where up to two panes are visible at a time.
 
+When the left pane is showing, the middle pane will always be shown. When the
+right pane is shown, it's up to the user to decide whether the middle pane is
+shown.
+
+
+
+Usage
+=====
+
+ThreePaneLayout can be used both in code and xml. It is not possible to
+directly define child views in xml or add them by calling `ViewGroup#addView`,
+but rather helper methods/attributes should be used.
+
+
+
+XML definition
+--------------
+
+```
+<net.simonvt.threepanelayout.ThreePaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/threePaneLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:leftPaneLayout="@layout/left_pane"
+    app:middlePaneLayout="@layout/middle_pane"
+    app:rightPaneLayout="@layout/right_pane" />
+```
+
+
+
+Creating in code
+----------------
+
+```
+mThreePaneLayout = new ThreePaneLayout(context);
+mThreePaneLayout.setLeftPaneLayout(R.layout.left_pane);
+mThreePaneLayout.setMiddlePaneLayout(R.layout.middle_pane);
+mThreePaneLayout.setRightPaneLayout(R.layout.right_pane);
+```
+
+
 
 License
 =======
