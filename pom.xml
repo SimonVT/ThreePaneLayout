@@ -3,19 +3,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <groupId>net.simonvt</groupId>
-    <artifactId>android-threepanelayout-parent</artifactId>
+    <artifactId>threepanelayout-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
 
-    <name>Android ThreePaneLayout (Parent)</name>
+    <name>ThreePaneLayout (Parent)</name>
     <description>A three-pane layout where only two panes are visible at a time.</description>
+    <url>https://github.com/SimonVT/ThreePaneLayout</url>
     <inceptionYear>2013</inceptionYear>
 
     <modules>
         <module>library</module>
         <module>samples</module>
     </modules>
+
+    <scm>
+        <url>http://github.com/SimonVT/ThreePaneLayout/</url>
+        <connection>scm:git:git://github.com/SimonVT/ThreePaneLayout.git</connection>
+        <developerConnection>scm:git:git@github.com:SimonVT/ThreePaneLayout.git</developerConnection>
+    </scm>
 
     <licenses>
         <license>
@@ -24,6 +37,11 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/SimonVT/ThreePaneLayout/issues</url>
+    </issueManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

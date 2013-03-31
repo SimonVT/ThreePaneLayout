@@ -5,13 +5,13 @@
 
     <parent>
         <groupId>net.simonvt</groupId>
-        <artifactId>android-threepanelayout-parent</artifactId>
+        <artifactId>threepanelayout-parent</artifactId>
         <version>1.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>android-threepanelayout</artifactId>
-    <name>Android ThreePaneLayout</name>
+    <artifactId>threepanelayout</artifactId>
+    <name>ThreePaneLayout</name>
     <packaging>apklib</packaging>
 
     <dependencies>
