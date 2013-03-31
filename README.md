@@ -21,7 +21,7 @@ but rather helper methods/attributes should be used.
 XML definition
 --------------
 
-```
+```xml
 <net.simonvt.threepanelayout.ThreePaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/threePaneLayout"
@@ -37,7 +37,7 @@ XML definition
 Creating in code
 ----------------
 
-```
+```java
 mThreePaneLayout = new ThreePaneLayout(context);
 mThreePaneLayout.setLeftPaneLayout(R.layout.left_pane);
 mThreePaneLayout.setMiddlePaneLayout(R.layout.middle_pane);
