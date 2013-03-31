@@ -1,5 +1,5 @@
-MenuDrawer
-=========
+ThreePaneLayout
+===============
 
 A three-pane layout where up to two panes are visible at a time.
 
