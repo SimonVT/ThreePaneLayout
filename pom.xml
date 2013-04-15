@@ -12,7 +12,7 @@
     <groupId>net.simonvt</groupId>
     <artifactId>threepanelayout-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <name>ThreePaneLayout (Parent)</name>
     <description>A three-pane layout where only two panes are visible at a time.</description>
@@ -28,7 +28,7 @@
         <url>http://github.com/SimonVT/ThreePaneLayout/</url>
         <connection>scm:git:git://github.com/SimonVT/ThreePaneLayout.git</connection>
         <developerConnection>scm:git:git@github.com:SimonVT/ThreePaneLayout.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>1.0.1</tag>
   </scm>
 
     <licenses>
