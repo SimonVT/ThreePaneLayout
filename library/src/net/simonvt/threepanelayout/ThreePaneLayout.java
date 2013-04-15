@@ -40,6 +40,11 @@ public class ThreePaneLayout extends ViewGroup {
     private static final int DEFAULT_DROP_SHADOW_WIDTH_DP = 6;
 
     /**
+     * The time between each frame.
+     */
+    protected static final int ANIMATION_DELAY = 1000 / 60;
+
+    /**
      * State when the layout is not animating and the left pane is visible.
      */
     public static final int STATE_LEFT_VISIBLE = 0;
@@ -678,6 +683,15 @@ public class ThreePaneLayout extends ViewGroup {
         }
 
         completeAnimation();
+    }
+
+    @Override
+    public void postOnAnimation(Runnable action) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            super.postOnAnimation(action);
+        } else {
+            postDelayed(action, ANIMATION_DELAY);
+        }
     }
 
     @Override
